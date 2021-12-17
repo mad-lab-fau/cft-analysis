@@ -1,0 +1,1 @@
+{"name": "CFT", "structure": {"Pre": null, "MIST": {"MIST1": {"BL": 60, "RP_CFI": 120, "AT": 240, "FB": 0}, "MIST2": {"BL": 60, "RP_CFI": 120, "AT": 240, "FB": 0}, "MIST3": {"BL": 60, "RP_CFI": 120, "AT": 240, "FB": 0}}, "Post": null}, "test_times": [0, 30]}

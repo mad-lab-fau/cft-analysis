@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "cft_analysis"
+version = "0.1.0"
+description = "Package for the analysis of Cold Face Test Data."
+authors = ["Robert Richer <robert.richer@fau.de>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.10"
+#biopsykit = {version = "^0.3.0", extras = ["jupyter"]}
+biopsykit = {path = "../../../../../BioPsyKit", develop=true, extras=["mne", "jupyter"]}
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | docs
+    | build
+    | dist
+    | \.virtual_documents
+  )/
+)
+'''
