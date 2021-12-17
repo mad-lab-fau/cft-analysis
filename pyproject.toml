@@ -2,15 +2,25 @@
 name = "cft_analysis"
 version = "0.1.0"
 description = "Package for the analysis of Cold Face Test Data."
-authors = ["Robert Richer <robert.richer@fau.de>"]
+authors = [
+    "Robert Richer <robert.richer@fau.de>",
+    "Janis Zenkner <janis.zenkner@fau.de>",
+    "Arne Kuederle <arne.kuederle@fau.de>"
+]
+license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.10"
-#biopsykit = {version = "^0.3.0", extras = ["jupyter"]}
-biopsykit = {path = "../../../../../BioPsyKit", develop=true, extras=["mne", "jupyter"]}
+python = ">=3.7.1,<3.10"
+biopsykit = {version = "^0.3.0", extras = ["mne", "jupyter"]}
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+poethepoet = "^0.11.0"
+pytest = "^6.2.5"
+pytest-cov = "^3.0.0"
+coverage = "^6.2"
+black = {version = "^21.9b0", extras = ["d"]}
+isort = "^5.10.1"
+prospector = "^1.2.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -36,3 +46,26 @@ exclude = '''
   )/
 )
 '''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 120
+skip_gitignore = true
+
+
+[tool.poe.tasks]
+_black = "black ."
+_black_check = "black . --check"
+_isort = "isort **/*.py"
+_isort_check = "isort **/*.py --check-only"
+
+# Reformat all files using black and sort import
+format = ["_black", "_isort"]
+format_check = ["_black_check", "_isort_check"]
+lint = "prospector"
+test = "pytest --cov=cft_analysis --cov-report=xml"
+docs = {"script" = "_tasks:task_docs"}
+update_version = {"script" = "_tasks:task_update_version"}
+register_ipykernel = "python -m ipykernel install --user --name cft_analysis --display-name cft_analysis"
+default = ["format", "lint", "test"]
