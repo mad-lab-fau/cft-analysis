@@ -1,6 +1,9 @@
 # ignore playground folder for testing stuff
 playground/
 
+# ignore config.json (local path specification)
+config.json
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
