@@ -1,12 +1,14 @@
-from typing import Optional
+from typing import Dict, Optional
 
-import pandas as pd
 import neurokit2 as nk
+import pandas as pd
+from biopsykit.signals.ecg import EcgProcessor
 from biopsykit.utils.array_handling import sliding_window
 from biopsykit.utils.datatype_helper import RPeakDataFrame
 
-
 __all__ = ["hrv_continuous"]
+
+from tqdm.auto import tqdm
 
 
 def hrv_continuous(rpeaks: RPeakDataFrame, sampling_rate: Optional[float] = 256.0) -> pd.DataFrame:
@@ -40,3 +42,7 @@ def hrv_continuous(rpeaks: RPeakDataFrame, sampling_rate: Optional[float] = 256.
     rpeaks_sliding_window = rpeaks_sliding_window.dropna()
 
     return rpeaks_sliding_window.apply(lambda row: nk.hrv_time(row, sampling_rate=int(sampling_rate)).squeeze(), axis=1)
+
+
+def hrv_continuous_dict(ecg_processor: EcgProcessor) -> Dict[str, pd.DataFrame]:
+    return {key: hrv_continuous(rpeaks) for key, rpeaks in tqdm(list(ecg_processor.rpeaks.items()), desc="HRV")}
