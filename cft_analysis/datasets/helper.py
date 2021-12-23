@@ -1,15 +1,13 @@
 import warnings
 from pathlib import Path
-from typing import Optional, Sequence, Tuple, Dict, Union
-
-from biopsykit.io import load_pandas_dict_excel
-from tqdm.auto import tqdm
+from typing import Dict, Optional, Sequence, Tuple, Union
 
 import pandas as pd
-from nilspodlib.legacy import CorruptedPackageWarning, LegacyWarning
-
+from biopsykit.io import load_pandas_dict_excel
+from biopsykit.io.nilspod import load_csv_nilspod, load_dataset_nilspod
 from biopsykit.utils.datatype_helper import SubjectDataDict
-from biopsykit.io.nilspod import load_dataset_nilspod, load_csv_nilspod
+from nilspodlib.legacy import CorruptedPackageWarning, LegacyWarning
+from tqdm.auto import tqdm
 
 from cft_analysis._types import path_t
 
@@ -94,10 +92,11 @@ def load_ecg_raw_data_folder(
     return dataset_dict
 
 
-def load_subject_data_dicts(subject_dirs: Sequence[path_t]) -> Tuple[SubjectDataDict, SubjectDataDict]:
+def load_subject_data_dicts(dataset: "CftDataset") -> Tuple[SubjectDataDict, SubjectDataDict]:
     subject_data_dict_hr = {}
     subject_data_dict_rpeaks = {}
 
+    subject_dirs = dataset.subject_dirs
     for subject_dir in tqdm(subject_dirs):
         subject_id = subject_dir.name
 
@@ -114,9 +113,10 @@ def load_subject_data_dicts(subject_dirs: Sequence[path_t]) -> Tuple[SubjectData
     return subject_data_dict_hr, subject_data_dict_rpeaks
 
 
-def load_subject_continuous_hrv_data(subject_dirs: Sequence[path_t]) -> Dict[str, Dict[str, pd.DataFrame]]:
+def load_subject_continuous_hrv_data(dataset: "CftDataset") -> Dict[str, Dict[str, pd.DataFrame]]:
     subject_data_dict_hrv = {}
 
+    subject_dirs = dataset.subject_dirs
     for subject_dir in tqdm(subject_dirs):
         subject_id = subject_dir.name
         hr_path = subject_dir.joinpath("processed")

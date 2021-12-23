@@ -1,11 +1,13 @@
 import itertools
 from functools import cached_property, lru_cache
-from typing import Optional, Sequence, Union, Dict
+from typing import Dict, Optional, Sequence, Union
 
 import biopsykit as bp
 import pandas as pd
-from biopsykit.io import load_questionnaire_data, load_long_format_csv
+from biopsykit.io import load_long_format_csv, load_questionnaire_data
 from biopsykit.utils.dataframe_handling import multi_xs
+from biopsykit.utils.datatype_helper import SubjectConditionDataFrame
+from biopsykit.utils.file_handling import mkdirs
 from tpcp import Dataset
 
 from cft_analysis._types import path_t
@@ -14,7 +16,7 @@ from cft_analysis.datasets.helper import load_ecg_raw_data_folder
 _cached_load_ecg_raw_data_folder = lru_cache(maxsize=5)(load_ecg_raw_data_folder)
 
 
-class CftDataset(Dataset):
+class CftDatasetRaw(Dataset):
 
     base_path: path_t
     use_cache: bool
@@ -54,7 +56,8 @@ class CftDataset(Dataset):
             return self._load_ecg(subject_id, phase=phase)
 
         raise ValueError(
-            "Data can only be accessed for a single participant or a single phase of one single in the subset"
+            "Data can only be accessed for a single participant or a single phase "
+            "of one single participant in the subset"
         )
 
     def _load_ecg(self, subject_id: str, phase: Sequence[str]) -> Union[pd.DataFrame, Dict[str, pd.DataFrame]]:
@@ -84,8 +87,19 @@ class CftDataset(Dataset):
     def cortisol(self) -> pd.DataFrame:
         return self._load_saliva_data("cortisol")
 
+    @property
+    def subject_dirs(self) -> Sequence[path_t]:
+        return bp.utils.file_handling.get_subject_dirs(self.base_path.joinpath("ecg"), r"Vp\w+")
+
+    @property
+    def condition_list(self) -> SubjectConditionDataFrame:
+        condition_df = self.index[["subject", "condition"]]
+        condition_df = condition_df.drop_duplicates()
+        condition_df = condition_df.set_index("subject")
+        return condition_df
+
     def _load_questionnaire_data(self) -> pd.DataFrame:
-        data_path = self.base_path.joinpath("questionnaire/processed/questionnaire_data.csv")
+        data_path = self.base_path.joinpath("questionnaire/cleaned/questionnaire_data_cleaned.xlsx")
 
         data = load_questionnaire_data(data_path)
         subject_ids = self.index["subject"].unique()
@@ -103,3 +117,15 @@ class CftDataset(Dataset):
         subject_ids = self.index["subject"].unique()
         conditions = self.index["condition"].unique()
         return multi_xs(multi_xs(data, subject_ids, level="subject"), conditions, level="condition")
+
+    def setup_export_paths(self) -> Dict[str, path_t]:
+        if not self.is_single("subject"):
+            print("Only supported for a single participant!")
+        subject_id = self.index["subject"][0]
+        ecg_path_proc = self.base_path.joinpath(f"ecg/{subject_id}/processed")
+        mkdirs(ecg_path_proc)
+
+        hr_result_filename = ecg_path_proc.joinpath("hr_result_{}.xlsx".format(subject_id))
+        rpeaks_result_filename = ecg_path_proc.joinpath("rpeaks_result_{}.xlsx".format(subject_id))
+        hrv_cont_filename = ecg_path_proc.joinpath("hrv_continuous_{}.xlsx".format(subject_id))
+        return {"hr_result": hr_result_filename, "rpeaks_result": rpeaks_result_filename, "hrv_cont": hrv_cont_filename}
