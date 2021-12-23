@@ -71,7 +71,7 @@ class CftDatasetRaw(Dataset):
             )
         else:
             data_dict = load_ecg_raw_data_folder(
-                self.base_path, subject_id, phase_names=self.phases, selected_phases=phase, datastreams="ecg"
+                self.base_path, subject_id, phases=self.phases, selected_phases=phase, datastreams="ecg"
             )
         if self.is_single(None):
             return data_dict[phase[0]]

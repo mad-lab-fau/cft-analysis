@@ -5,6 +5,7 @@ from typing import Dict, Optional, Sequence, Tuple, Union
 import pandas as pd
 from biopsykit.io import load_pandas_dict_excel
 from biopsykit.io.nilspod import load_csv_nilspod, load_dataset_nilspod
+from biopsykit.utils._types import str_t
 from biopsykit.utils.datatype_helper import SubjectDataDict
 from nilspodlib.legacy import CorruptedPackageWarning, LegacyWarning
 from tqdm.auto import tqdm
@@ -17,8 +18,8 @@ __all__ = ["load_ecg_raw_data_folder", "load_subject_data_dicts"]
 def load_ecg_raw_data_folder(
     base_path: path_t,
     subject_id: str,
-    phase_names: Sequence[str],
-    selected_phases: Optional[Sequence[str]] = None,
+    phases: Sequence[str],
+    selected_phases: Optional[str_t] = None,
     datastreams: Optional[Union[str, Sequence[str]]] = None,
 ) -> Dict[str, pd.DataFrame]:
     """Load all NilsPod datasets from one folder, convert them into dataframes, and combine them into a dictionary.
@@ -37,8 +38,10 @@ def load_ecg_raw_data_folder(
         base path to data folder
     subject_id : str
         Subject ID
-    phase_names: list
-        list of phase names corresponding to the files in the folder.
+    phases: list
+        list of phase names corresponding to the files in the folder
+    selected_phases: list
+        list of phase names to load into the dictionary
     datastreams : str or list of str, optional
         list of datastreams if only specific datastreams of the dataset object should be imported or
         ``None`` to load all datastreams. Datastreams that are not part of the current dataset will be silently ignored.
@@ -84,7 +87,7 @@ def load_ecg_raw_data_folder(
     ]
     # remove the last second of the dataframe
     dataset_list = [(data.iloc[: -int(fs)], fs) for (data, fs) in dataset_list]
-    dataset_dict = {phase: df for phase, (df, fs) in zip(phase_names, dataset_list)}
+    dataset_dict = {phase: df for phase, (df, fs) in zip(phases, dataset_list)}
 
     if selected_phases is not None:
         dataset_dict = {phase: dataset_dict[phase] for phase in selected_phases}
@@ -92,7 +95,22 @@ def load_ecg_raw_data_folder(
     return dataset_dict
 
 
-def load_subject_data_dicts(dataset: "CftDataset") -> Tuple[SubjectDataDict, SubjectDataDict]:
+def load_subject_data_dicts(dataset: "CftDatasetRaw") -> Tuple[SubjectDataDict, SubjectDataDict]:
+    """Load ``SubjectDataDict`` with heart rate and r-peak data.
+
+    Parameters
+    ----------
+    dataset : :class:`~cft_analysis.datasets.CftDatasetRaw`
+        dataset object to extract file paths from
+
+    Returns
+    -------
+    subject_data_dict_hr : :obj:`~biopsykit.utils.datatype_helper.SubjectDataDict`
+        ``SubjectDataDict`` containing heart rate data of all subjects
+    subject_data_dict_rpeaks : :obj:`~biopsykit.utils.datatype_helper.SubjectDataDict`
+        ``SubjectDataDict`` containing r-peak data of all subjects
+
+    """
     subject_data_dict_hr = {}
     subject_data_dict_rpeaks = {}
 
