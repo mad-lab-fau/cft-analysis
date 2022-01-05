@@ -16,6 +16,7 @@ class CftDatasetProcessed(Dataset):
     base_path: path_t
     cft_hr_features_filename: str = "ecg/cft_hr_features_merged.csv"
     exclude_subjects: bool
+    _saliva_sample_times: Sequence[int] = [-30, -1, 0, 10, 20, 30, 40]
 
     def __init__(
         self,
@@ -89,6 +90,10 @@ class CftDatasetProcessed(Dataset):
         data = self._load_questionnaire_data()
         codebook = bp.io.load_codebook(self.base_path.joinpath("questionnaire/codebook.csv"))
         return bp.utils.dataframe_handling.apply_codebook(data, codebook)
+
+    @property
+    def sample_times(self) -> Sequence[int]:
+        return self._saliva_sample_times
 
     @property
     def cortisol(self) -> pd.DataFrame:
