@@ -1,0 +1,7 @@
+﻿variable,1,2,3,4,5,6,7,8,9
+gender,male,female,,,,,,,
+education,kein Schulabschluss,Hauptschule,Mittlere Reife,Fachabitur,Abitur,Bachelor,Master/Diplom,Promotion,Habilitation
+marital_status,ledig,feste Partnerschaft,verheiratet,getrennt lebend,geschieden,verwitwet,,,
+maternal_language,other language,german,,,,,,,
+cft_sensation,control,negative,neutral,positive,,,,,
+smoker,yes,no,,,,,,,

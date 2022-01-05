@@ -1,0 +1,6 @@
+,count,count,percent,percent
+gender,female,male,female,male
+condition,,,,
+CFT,11,1,0.9166666666666666,0.08333333333333333
+Control,10,3,0.7692307692307693,0.23076923076923078
+Total,21,4,0.84,0.16
