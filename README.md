@@ -36,10 +36,10 @@ The repository is structured as follows:
 Currently, this repository contains the following experiments:
 
 ### 2021 – Scientific Reports
-Analysis of the [2019 CFT Dataset](https://mad-srv.informatik.uni-erlangen.de/MadLab/data/health-psychology/cold-face-test-data) (collected during the [Bachelor's Thesis](https://mad-srv.informatik.uni-erlangen.de/MadLab/health-psychology/student-projects/ba-janis-zenkner) of Janis Zenkner) for the paper "Exploring the Cold Face Test as a Mechanism for Reducing Acute Psychosocial Stress Responses", submitted to *Scientific Reports*.
+Analysis of the [CFT Dataset](https://mad-srv.informatik.uni-erlangen.de/MadLab/data/health-psychology/cold-face-test-data) for the paper "Exploring the Cold Face Test as a Mechanism for Reducing Acute Psychosocial Stress Responses", submitted to *Scientific Reports*.
 
 #### Usage
-In order to run the code, first download the [2019 CFT Dataset](https://mad-srv.informatik.uni-erlangen.de/MadLab/data/health-psychology/cold-face-test-data). Then, create a file named `config.json` in the folder `/experiments/2021_scientific_reports` with the following content:
+In order to run the code, first download the [CFT Dataset](https://mad-srv.informatik.uni-erlangen.de/MadLab/data/health-psychology/cold-face-test-data). Then, create a file named `config.json` in the folder `/experiments/2021_scientific_reports` with the following content:
 ```json
 {
     "base_path": "<path-to-dataset>"
