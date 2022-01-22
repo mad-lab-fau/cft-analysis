@@ -1,3 +1,4 @@
+"""Method(s) for extracting continuous HRV parameter."""
 from typing import Dict, Optional
 
 import neurokit2 as nk
@@ -45,4 +46,17 @@ def hrv_continuous(rpeaks: RPeakDataFrame, sampling_rate: Optional[float] = 256.
 
 
 def hrv_continuous_dict(ecg_processor: EcgProcessor) -> Dict[str, pd.DataFrame]:
+    """Extract continuous heart rate variability (HRV) data from a dictionary of data.
+
+    Parameters
+    ----------
+    ecg_processor : :class:`~biopsykit.signals.ecg.EcgProcessor`
+        ``EcgProcessor`` instance to extract R-peak data from
+
+    Returns
+    -------
+    dict
+        dictionary with continuous HRV data
+
+    """
     return {key: hrv_continuous(rpeaks) for key, rpeaks in tqdm(list(ecg_processor.rpeaks.items()), desc="HRV")}

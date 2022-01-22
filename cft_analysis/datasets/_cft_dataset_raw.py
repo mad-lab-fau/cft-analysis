@@ -1,6 +1,7 @@
+"""Dataset representing raw data of the CFT dataset."""
 import itertools
 from functools import cached_property, lru_cache
-from typing import Dict, Optional, Sequence, Union
+from typing import Dict, Optional, Sequence, Union, Tuple
 
 import biopsykit as bp
 import pandas as pd
@@ -17,11 +18,25 @@ _cached_load_ecg_raw_data_folder = lru_cache(maxsize=5)(load_ecg_raw_data_folder
 
 
 class CftDatasetRaw(Dataset):
+    """Representation of raw data (ECG, saliva, self-reports) collected during the CFT study.
+
+    Data are only loaded once the respective attributes are accessed. By default, the last five calls of the
+    ``ecg`` attribute are cached. Caching can be disabled by setting the ``use_cache`` argument to ``False`` during
+    initialization.
+
+    Parameters
+    ----------
+    base_path
+        The base folder where the dataset can be found.
+    use_cache
+        ``True`` to cache the last five calls to loading ECG data, ``False`` to disable caching.
+
+    """
 
     base_path: path_t
     use_cache: bool
     _sampling_rate: float = 256.0
-    phases: Sequence[str] = None
+    phases: Tuple[str] = ("Pre", "MIST1", "MIST2", "MIST3", "Post")
 
     def __init__(
         self,
@@ -34,7 +49,6 @@ class CftDatasetRaw(Dataset):
         # ensure pathlib
         self.base_path = base_path
         self.use_cache = use_cache
-        self.phases = ["Pre", "MIST1", "MIST2", "MIST3", "Post"]
 
     def create_index(self) -> pd.DataFrame:
         condition_list = bp.io.load_subject_condition_list(self.base_path.joinpath("condition_list.csv"))
@@ -46,10 +60,29 @@ class CftDatasetRaw(Dataset):
 
     @property
     def sampling_rate(self) -> float:
+        """Return Sampling rate of ECG data in Hz.
+
+        Returns
+        -------
+        float
+            sampling rate in Hz
+
+        """
         return self._sampling_rate
 
     @cached_property
     def ecg(self) -> Union[pd.DataFrame, Dict[str, pd.DataFrame]]:
+        """Load and return ECG data.
+
+        Data are either returned as dataframe (if a single phase is selected) or as dict of
+        dataframes (if multiple phases are selected).
+
+        Returns
+        -------
+        dataframe or dict of dataframe
+            ecg data of a single phase or a dict of such for multiple phases
+
+        """
         if any([self.is_single(None), self.is_single(["subject", "condition"]), self.is_single(["subject"])]):
             subject_id = self.index["subject"][0]
             phase = list(self.index["phase"].unique())
@@ -79,20 +112,24 @@ class CftDatasetRaw(Dataset):
 
     @property
     def questionnaire(self):
+        """Load and return questionnaire data."""
         if self.is_single(None):
             raise ValueError("questionnaire data can not be accessed for individual phases!")
         return self._load_questionnaire_data()
 
     @property
     def cortisol(self) -> pd.DataFrame:
+        """Load and return cortisol data."""
         return self._load_saliva_data("cortisol")
 
     @property
     def subject_dirs(self) -> Sequence[path_t]:
+        """Return list of participant folders containing ECG data."""
         return bp.utils.file_handling.get_subject_dirs(self.base_path.joinpath("ecg"), r"Vp\w+")
 
     @property
     def condition_list(self) -> SubjectConditionDataFrame:
+        """Load and return condition list."""
         condition_df = self.index[["subject", "condition"]]
         condition_df = condition_df.drop_duplicates()
         condition_df = condition_df.set_index("subject")
@@ -119,6 +156,17 @@ class CftDatasetRaw(Dataset):
         return multi_xs(multi_xs(data, subject_ids, level="subject"), conditions, level="condition")
 
     def setup_export_paths(self) -> Dict[str, path_t]:
+        """Create and return paths to export processing results.
+
+        Returns
+        -------
+        dict
+            dictionary with export paths to export the following processing results:
+            * "hr_result": heart rate processing results
+            * "rpeaks_result": R-peak processing results
+            * "hrv_cont": continuous heart rate variability processing results
+
+        """
         if not self.is_single("subject"):
             print("Only supported for a single participant!")
         subject_id = self.index["subject"][0]

@@ -1,3 +1,4 @@
+"""Method(s) for extracting CFT parameter."""
 __all__ = ["cft_parameter_per_phase"]
 
 import pandas as pd
@@ -10,6 +11,21 @@ from tqdm.auto import tqdm
 def cft_parameter_per_phase(
     hr_subject_data_dict: SubjectDataDict, cft_subject_list: SubjectConditionDataFrame
 ) -> pd.DataFrame:
+    """Compute CFT parameter for each phase where the CFT was applied.
+
+    Parameters
+    ----------
+    hr_subject_data_dict : :obj:`~biopsykit.utils.datatype_helper.HeartRateSubjectDict`
+        ``HeartRateSubjectDict`` as returned by :func:`~cft_analysis.datasets.helper.load_subject_data_dicts`
+    cft_subject_list : :obj:`biopsykit.utils.datatype_helper.SubjectConditionDataFrame`
+        list of subject IDs belonging to the CFT condition
+
+    Returns
+    -------
+    :class:`~pandas.DataFrame`
+        dataframe with CFT parameters
+
+    """
     subject_dict_result = {}
 
     # select all only MIST phases to split into subphases

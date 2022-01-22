@@ -1,3 +1,4 @@
+"""Helper functions for loading data."""
 import warnings
 from pathlib import Path
 from typing import Dict, Optional, Sequence, Tuple, Union
@@ -95,7 +96,7 @@ def load_ecg_raw_data_folder(
     return dataset_dict
 
 
-def load_subject_data_dicts(dataset: "CftDatasetRaw") -> Tuple[SubjectDataDict, SubjectDataDict]:
+def load_subject_data_dicts(dataset: "CftDatasetRaw") -> Tuple[SubjectDataDict, SubjectDataDict]:  # noqa: F821
     """Load ``SubjectDataDict`` with heart rate and r-peak data.
 
     Parameters
@@ -131,7 +132,21 @@ def load_subject_data_dicts(dataset: "CftDatasetRaw") -> Tuple[SubjectDataDict, 
     return subject_data_dict_hr, subject_data_dict_rpeaks
 
 
-def load_subject_continuous_hrv_data(dataset: "CftDataset") -> Dict[str, Dict[str, pd.DataFrame]]:
+def load_subject_continuous_hrv_data(dataset: "CftDatasetRaw") -> Dict[str, Dict[str, pd.DataFrame]]:  # noqa: F821
+    """Load continuous heart rate variability data.
+
+    Parameters
+    ----------
+    dataset : :class:`~cft_analysis.datasets.CftDatasetRaw`
+        dataset object to extract file paths from
+
+    Returns
+    -------
+    dict
+        nested dictionary with continuous heart rate variability data for each participant (first dict level) and
+        for each phase (second dict level)
+
+    """
     subject_data_dict_hrv = {}
 
     subject_dirs = dataset.subject_dirs

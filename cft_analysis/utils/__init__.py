@@ -1,3 +1,3 @@
-import cft_analysis.utils.data_reshaping
+"""Module with various utility functions."""
 
 __all__ = ["data_reshaping"]
