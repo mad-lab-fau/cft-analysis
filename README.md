@@ -1,4 +1,10 @@
-# CFT Analysis
+# cft-analysis
+
+[![PyPI](https://img.shields.io/pypi/v/cft-analysis)](https://pypi.org/project/cft-analysis/)
+![GitHub](https://img.shields.io/github/license/mad-lab-fau/cft-analysis)
+[![Lint](https://github.com/mad-lab-fau/cft-analysis/actions/workflows/lint.yml/badge.svg)](https://github.com/mad-lab-fau/cft-analysis/actions/workflows/lint.yml)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mad-lab-fau/cft-analysis)
 
 Python package for the analysis of data collected during the Cold Face Test (CFT) study.
 
