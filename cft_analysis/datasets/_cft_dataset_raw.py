@@ -1,7 +1,7 @@
 """Dataset representing raw data of the CFT dataset."""
 import itertools
 from functools import cached_property, lru_cache
-from typing import Dict, Optional, Sequence, Union, Tuple
+from typing import Dict, Optional, Sequence, Tuple, Union
 
 import biopsykit as bp
 import pandas as pd
