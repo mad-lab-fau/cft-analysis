@@ -59,18 +59,7 @@ The files in the `data` folder are created by running the notebooks in the `data
 
 
 ## Installation
-This package uses [poetry](https://python-poetry.org/) to manage dependencies and packaging. In order to use this project for development, first install poetry, then run the following commands to get the latest source, initialize a virtual env and install all development dependencies:
 
-With ssh access:
 ```bash
-git clone git@mad-srv.informatik.uni-erlangen.de:MadLab/health-psychology/cft-analysis.git
-cd cft-analysis
-poetry install
-```
-
-With https access:
-```bash
-git clone https://mad-srv.informatik.uni-erlangen.de/MadLab/health-psychology/cft-analysis.git
-cd cft-analysis
-poetry install
+pip install cft-analysis
 ```
