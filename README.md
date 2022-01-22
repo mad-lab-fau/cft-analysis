@@ -1,6 +1,6 @@
 # CFT Analysis
 
-Python package for the analysis of data collected during the Cold Face Test (CFT) procedure.
+Python package for the analysis of data collected during the Cold Face Test (CFT) study.
 
 ## Description
 
