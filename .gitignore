@@ -1,8 +1,9 @@
 # ignore playground folder for testing stuff
 playground/
 
-# ignore config.json (local path specification)
+# ignore config.json and paper_path.json (local path specifications to dataset and paper folder)
 config.json
+paper_path.json
 
 
 # Byte-compiled / optimized / DLL files
@@ -86,6 +87,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+.jupyter_symlinks
 
 # IPython
 profile_default/
