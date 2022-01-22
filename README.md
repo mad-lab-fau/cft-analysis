@@ -59,7 +59,16 @@ The files in the `data` folder are created by running the notebooks in the `data
 
 
 ## Installation
+If you want to use this package to reproduce the analysis results then clone the repository and install the 
+package via pip or poetry:
+```bash
+git clone git@github.com:mad-lab-fau/cft-analysis.git
+cd cft-analysis
+poetry install # alternative: pip install .
+```
 
+If you want to use this package to work with the CFT dataset on your own you can simply install this package via pip:
 ```bash
 pip install cft-analysis
 ```
+
