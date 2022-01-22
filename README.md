@@ -4,7 +4,7 @@ Python package for the analysis of data collected during the Cold Face Test (CFT
 
 ## Description
 
-This package contains various helper functions to work with the dataset (including [`tpcp`](https://github.com/mad-lab-fau/tpcp) `Dataset` representations), process data, and different analysis experiments performed with the dataset.
+This package contains various helper functions to work with the dataset (including [`tpcp`](https://github.com/mad-lab-fau/tpcp) `Dataset` representations) and to process data. Additionally, it contains different analysis experiments performed with the dataset.
 
 ## Repository Structure
 The repository is structured as follows:
@@ -12,7 +12,7 @@ The repository is structured as follows:
 ```bash
 ├── cft_analysis/                                   # cft-analysis Python package
 └── experiments/                                    # Folder with conducted analysis experiments; each experiment has its own subfolder
-    └── 2021_scientific_reports/                    # Analysis for the 2021 Scientific Reports Paper (see below)
+    └── 2022_scientific_reports/                    # Analysis for the 2022 Scientific Reports Paper (see below)
         ├── data/                                   # Processed data and extracted parameters
         ├── notebooks/                              # Notebooks for data processing, analysis and plotting
         │   ├── data_processing/            
@@ -35,8 +35,8 @@ The repository is structured as follows:
 ## Experiments
 Currently, this repository contains the following experiments:
 
-### 2021 – Scientific Reports
-Analysis of the [CFT Dataset](https://mad-srv.informatik.uni-erlangen.de/MadLab/data/health-psychology/cold-face-test-data) for the paper "Exploring the Cold Face Test as a Mechanism for Reducing Acute Psychosocial Stress Responses", submitted to *Scientific Reports*.
+### 2022 – Scientific Reports
+Analysis of the [CFT Dataset](https://mad-srv.informatik.uni-erlangen.de/MadLab/data/health-psychology/cold-face-test-data) for the paper "Exploring the Cold Face Test as a Mechanism for Reducing Acute Psychosocial Stress Responses", submitted to *Scientific Reports* [TODO: update when published].
 
 #### Usage
 In order to run the code, first download the [CFT Dataset](https://mad-srv.informatik.uni-erlangen.de/MadLab/data/health-psychology/cold-face-test-data). Then, create a file named `config.json` in the folder `/experiments/2021_scientific_reports` with the following content:
