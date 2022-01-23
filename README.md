@@ -37,6 +37,21 @@ The repository is structured as follows:
 
 ```
 
+## Installation
+If you want to use this package to reproduce the analysis results then clone the repository and install the 
+package via [poetry](https://python-poetry.org):
+```bash
+git clone git@github.com:mad-lab-fau/cft-analysis.git
+cd cft-analysis
+poetry install # alternative: pip install .
+```
+This creates a new python venv in the `cft-analysis/.venv` folder. Next, register a new IPython kernel for the venv:
+```bash
+cd cft-analysis
+poe register_ipykernel
+```
+
+Finally, go to the `experiments` folder and run the Jupyter Notebooks. 
 
 ## Experiments
 Currently, this repository contains the following experiments:
@@ -45,7 +60,7 @@ Currently, this repository contains the following experiments:
 Analysis of the [CFT Dataset](https://mad-srv.informatik.uni-erlangen.de/MadLab/data/health-psychology/cold-face-test-data) for the paper "Exploring the Cold Face Test as a Mechanism for Reducing Acute Psychosocial Stress Responses", submitted to *Scientific Reports* [TODO: update when published].
 
 #### Usage
-In order to run the code, first download the [CFT Dataset](https://mad-srv.informatik.uni-erlangen.de/MadLab/data/health-psychology/cold-face-test-data). Then, create a file named `config.json` in the folder `/experiments/2022_scientific_reports` with the following content:
+In order to run the code, first download the CFT Dataset, e.g. from [OSF](https://osf.io/8fb6n/). Then, create a file named `config.json` in the folder `/experiments/2022_scientific_reports` with the following content:
 ```json
 {
     "base_path": "<path-to-dataset>"
@@ -58,17 +73,4 @@ The files in the `data` folder are created by running the notebooks in the `data
 
 
 
-## Installation
-If you want to use this package to reproduce the analysis results then clone the repository and install the 
-package via pip or poetry:
-```bash
-git clone git@github.com:mad-lab-fau/cft-analysis.git
-cd cft-analysis
-poetry install # alternative: pip install .
-```
-
-If you want to use this package to work with the CFT dataset on your own you can simply install this package via pip:
-```bash
-pip install cft-analysis
-```
 
