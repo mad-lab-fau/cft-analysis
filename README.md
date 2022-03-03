@@ -48,7 +48,7 @@ poetry install # alternative: pip install .
 This creates a new python venv in the `cft-analysis/.venv` folder. Next, register a new IPython kernel for the venv:
 ```bash
 cd cft-analysis
-poe register_ipykernel
+poetry run poe register_ipykernel
 ```
 
 Finally, go to the `experiments` folder and run the Jupyter Notebooks. 
