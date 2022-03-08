@@ -1,0 +1,17 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Richer"
+  given-names: "Robert"
+- family-names: "Zenkner"
+  given-names: "Janis"
+- family-names: "Küderle"
+  given-names: "Arne"
+- family-names: "Rohleder"
+  given-names: "Nicolas"
+- family-names: "Eskofier"
+  given-names: "Bjoern M."
+title: "cft-analysis - A Package for the analysis of Cold Face Test Data"
+version: 1.0.0
+doi: 10.17605/OSF.IO/FMSKJ
+url: "https://github.com/mad-lab-fau/cft-analysis"
