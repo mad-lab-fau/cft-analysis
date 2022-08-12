@@ -9,7 +9,7 @@ This module provides two different representations of the dataset:
   * ``sampling_rate``: Sampling rate of ECG data in Hz
   * ``questionnaire``: Self-report data including demographic information and questionnaires.
   * ``cortisol``: Cortisol samples
-  * ``subject_dirs``: List of paths to participants ECG data are stored.
+  * ``subject_dirs``: List of paths to where participants' ECG data are stored.
   * ``condition_list``: Mapping of participant IDs to conditions (Control / CFT)
 
 * ``CftDatasetProcessed``: Representation of processed ECG, saliva, and self-report data.

@@ -36,6 +36,7 @@ class CftDatasetRaw(Dataset):
     base_path: path_t
     use_cache: bool
     _sampling_rate: float = 256.0
+
     phases: Tuple[str] = ("Pre", "MIST1", "MIST2", "MIST3", "Post")
 
     def __init__(
