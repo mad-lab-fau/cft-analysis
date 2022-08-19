@@ -46,10 +46,10 @@ class CftDatasetRaw(Dataset):
         subset_index: Optional[Sequence[str]] = None,
         use_cache: Optional[bool] = True,
     ):
-        super().__init__(groupby_cols=groupby_cols, subset_index=subset_index)
         # ensure pathlib
         self.base_path = base_path
         self.use_cache = use_cache
+        super().__init__(groupby_cols=groupby_cols, subset_index=subset_index)
 
     def create_index(self) -> pd.DataFrame:
         condition_list = bp.io.load_subject_condition_list(self.base_path.joinpath("condition_list.csv"))

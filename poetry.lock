@@ -136,37 +136,37 @@ lxml = ["lxml"]
 
 [[package]]
 name = "biopsykit"
-version = "0.5.1"
+version = "0.6.1"
 description = "A Python package for the analysis of biopsychological data."
 category = "main"
 optional = false
 python-versions = ">=3.8,<3.11"
 
 [package.dependencies]
-fau-colors = ">=1,<2"
-ipympl = {version = ">=0.8.0,<0.9.0", optional = true, markers = "extra == \"jupyter\""}
-IPython = {version = ">=7.13.0,<8.0.0", optional = true, markers = "extra == \"jupyter\""}
-ipywidgets = {version = ">=7.6.3,<8.0.0", optional = true, markers = "extra == \"jupyter\""}
-joblib = ">=1.1.0,<2.0.0"
-matplotlib = ">=3,<4"
-neurokit2 = ">=0.1.3,<0.2.0"
-nilspodlib = ">=3.2.2,<4.0.0"
+fau-colors = ">=1.1,<2.0"
+ipympl = {version = ">=0.9,<0.10", optional = true, markers = "extra == \"jupyter\""}
+IPython = {version = ">=7,<8", optional = true, markers = "extra == \"jupyter\""}
+ipywidgets = {version = ">=7,<8", optional = true, markers = "extra == \"jupyter\""}
+joblib = ">=1,<2"
+matplotlib = ">=3.4,<4.0"
+neurokit2 = ">=0,<1"
+nilspodlib = ">=3,<4"
 numpy = ">=1,<2"
-openpyxl = ">=3.0.7,<4.0.0"
+openpyxl = ">=3,<4"
 pandas = ">=1,<2"
-pingouin = ">=0.5.1,<0.6.0"
+pingouin = ">=0.5.2,<0.6.0"
 scikit-learn = ">=1.0,<2.0"
-scipy = ">=1.7.0,<2.0.0"
-seaborn = ">=0.11.2,<0.12.0"
+scipy = ">=1,<2"
+seaborn = ">=0,<1"
 statannot = ">=0.2.3,<0.3.0"
 statsmodels = ">=0.13,<0.14"
-tqdm = ">=4.62.0,<5.0.0"
-xlrd = ">=2.0.1,<3.0.0"
-XlsxWriter = ">=1.4.5,<2.0.0"
+tqdm = ">=4,<5"
+xlrd = ">=2,<3"
+XlsxWriter = ">=1,<2"
 
 [package.extras]
+jupyter = ["ipympl (>=0.9,<0.10)", "ipywidgets (>=7,<8)", "IPython (>=7,<8)"]
 mne = ["mne (>=0.23.0,<0.24.0)"]
-jupyter = ["IPython (>=7.13.0,<8.0.0)", "ipywidgets (>=7.6.3,<8.0.0)", "ipympl (>=0.8.0,<0.9.0)"]
 
 [[package]]
 name = "black"
@@ -260,7 +260,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "coverage"
-version = "6.4.3"
+version = "6.4.4"
 description = "Code coverage measurement for Python"
 category = "dev"
 optional = false
@@ -282,7 +282,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "debugpy"
-version = "1.6.2"
+version = "1.6.3"
 description = "An implementation of the Debug Adapter Protocol for Python"
 category = "main"
 optional = false
@@ -352,11 +352,11 @@ devel = ["colorama", "jsonschema", "json-spec", "pylint", "pytest", "pytest-benc
 
 [[package]]
 name = "fau-colors"
-version = "1.0.5"
+version = "1.1.0"
 description = "The official colors of FAU as matplotlib/seaborn colormaps"
 category = "main"
 optional = false
-python-versions = ">=3.7.1,<3.11"
+python-versions = ">=3.8,<3.11"
 
 [package.dependencies]
 matplotlib = ">=3.4.3,<4.0.0"
@@ -389,7 +389,7 @@ flake8 = "*"
 
 [[package]]
 name = "fonttools"
-version = "4.34.4"
+version = "4.36.0"
 description = "Tools to manipulate font files"
 category = "main"
 optional = false
@@ -492,7 +492,7 @@ test = ["flaky", "ipyparallel", "pre-commit", "pytest-cov", "pytest-timeout", "p
 
 [[package]]
 name = "ipympl"
-version = "0.8.8"
+version = "0.9.1"
 description = "Matplotlib Jupyter Extension"
 category = "main"
 optional = false
@@ -502,10 +502,13 @@ python-versions = "*"
 ipython = "<9"
 ipython-genutils = "*"
 ipywidgets = ">=7.6.0,<8"
-matplotlib = ">=2.0.0,<4"
+matplotlib = ">=3.4.0,<4"
 numpy = "*"
 pillow = "*"
 traitlets = "<6"
+
+[package.extras]
+docs = ["sphinx-book-theme", "sphinx-togglebutton", "sphinx-thebe", "sphinx-copybutton", "Sphinx (>=1.5)", "myst-nb"]
 
 [[package]]
 name = "ipython"
@@ -549,7 +552,7 @@ python-versions = "*"
 
 [[package]]
 name = "ipywidgets"
-version = "7.7.1"
+version = "7.7.2"
 description = "IPython HTML widgets for Jupyter"
 category = "main"
 optional = false
@@ -559,12 +562,12 @@ python-versions = "*"
 ipykernel = ">=4.5.1"
 ipython = {version = ">=4.0.0", markers = "python_version >= \"3.3\""}
 ipython-genutils = ">=0.2.0,<0.3.0"
-jupyterlab-widgets = {version = ">=1.0.0", markers = "python_version >= \"3.6\""}
+jupyterlab-widgets = {version = ">=1.0.0,<3", markers = "python_version >= \"3.6\""}
 traitlets = ">=4.3.1"
 widgetsnbextension = ">=3.6.0,<3.7.0"
 
 [package.extras]
-test = ["pytest (>=3.6.0)", "pytest-cov", "mock"]
+test = ["mock", "pytest-cov", "pytest (>=3.6.0)"]
 
 [[package]]
 name = "isort"
@@ -619,7 +622,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "jsonschema"
-version = "4.9.1"
+version = "4.13.0"
 description = "An implementation of JSON Schema validation for Python"
 category = "main"
 optional = false
@@ -766,7 +769,7 @@ setuptools_scm = ">=4,<7"
 
 [[package]]
 name = "matplotlib-inline"
-version = "0.1.3"
+version = "0.1.6"
 description = "Inline Matplotlib backend for Jupyter"
 category = "main"
 optional = false
@@ -886,7 +889,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "neurokit2"
-version = "0.1.7"
+version = "0.2.0"
 description = "The Python Toolbox for Neurophysiological Signal Processing."
 category = "main"
 optional = false
@@ -896,11 +899,11 @@ python-versions = "*"
 matplotlib = "*"
 numpy = "*"
 pandas = "*"
-scikit-learn = "*"
+scikit-learn = ">=1.0.0"
 scipy = "*"
 
 [package.extras]
-test = ["numpy", "pandas", "scipy", "scikit-learn", "matplotlib", "pytest", "coverage", "bioread", "mne", "pyentrp", "antropy", "nolds", "biosppy (==0.6.1)", "cvxopt", "pywavelets", "emd-signal", "astropy"]
+test = ["astropy", "emd-signal", "pywavelets", "cvxopt", "biosppy (==0.6.1)", "nolds", "entropyhub", "antropy", "pyentrp", "mne", "bioread", "coverage", "pytest", "matplotlib", "scikit-learn (>=1.0.0)", "scipy", "pandas", "numpy"]
 
 [[package]]
 name = "nilspodlib"
@@ -1124,7 +1127,7 @@ tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "pa
 
 [[package]]
 name = "pingouin"
-version = "0.5.1"
+version = "0.5.2"
 description = "Pingouin: statistical package for Python"
 category = "main"
 optional = false
@@ -1136,7 +1139,7 @@ numpy = ">=1.19"
 outdated = "*"
 pandas = ">=1.0"
 pandas_flavor = ">=0.2.0"
-scikit-learn = "*"
+scikit-learn = "<1.1.0"
 scipy = ">=1.7"
 seaborn = ">=0.11"
 statsmodels = ">=0.13"
@@ -1308,11 +1311,14 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "pygments"
-version = "2.12.0"
+version = "2.13.0"
 description = "Pygments is a syntax highlighting package written in Python."
 category = "main"
 optional = false
 python-versions = ">=3.6"
+
+[package.extras]
+plugins = ["importlib-metadata"]
 
 [[package]]
 name = "pylint"
@@ -1529,23 +1535,23 @@ astroid = ">=1.4"
 
 [[package]]
 name = "scikit-learn"
-version = "1.1.2"
+version = "1.0.2"
 description = "A set of python modules for machine learning and data mining"
 category = "main"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.7"
 
 [package.dependencies]
-joblib = ">=1.0.0"
-numpy = ">=1.17.3"
-scipy = ">=1.3.2"
+joblib = ">=0.11"
+numpy = ">=1.14.6"
+scipy = ">=1.1.0"
 threadpoolctl = ">=2.0.0"
 
 [package.extras]
-tests = ["numpydoc (>=1.2.0)", "pyamg (>=4.0.0)", "mypy (>=0.961)", "black (>=22.3.0)", "flake8 (>=3.8.2)", "pytest-cov (>=2.9.0)", "pytest (>=5.0.1)", "pandas (>=1.0.5)", "scikit-image (>=0.16.2)", "matplotlib (>=3.1.2)"]
-examples = ["seaborn (>=0.9.0)", "pandas (>=1.0.5)", "scikit-image (>=0.16.2)", "matplotlib (>=3.1.2)"]
-docs = ["sphinxext-opengraph (>=0.4.2)", "sphinx-prompt (>=1.3.0)", "Pillow (>=7.1.2)", "numpydoc (>=1.2.0)", "sphinx-gallery (>=0.7.0)", "sphinx (>=4.0.1)", "memory-profiler (>=0.57.0)", "seaborn (>=0.9.0)", "pandas (>=1.0.5)", "scikit-image (>=0.16.2)", "matplotlib (>=3.1.2)"]
-benchmark = ["memory-profiler (>=0.57.0)", "pandas (>=1.0.5)", "matplotlib (>=3.1.2)"]
+benchmark = ["matplotlib (>=2.2.3)", "pandas (>=0.25.0)", "memory-profiler (>=0.57.0)"]
+docs = ["matplotlib (>=2.2.3)", "scikit-image (>=0.14.5)", "pandas (>=0.25.0)", "seaborn (>=0.9.0)", "memory-profiler (>=0.57.0)", "sphinx (>=4.0.1)", "sphinx-gallery (>=0.7.0)", "numpydoc (>=1.0.0)", "Pillow (>=7.1.2)", "sphinx-prompt (>=1.3.0)", "sphinxext-opengraph (>=0.4.2)"]
+examples = ["matplotlib (>=2.2.3)", "scikit-image (>=0.14.5)", "pandas (>=0.25.0)", "seaborn (>=0.9.0)"]
+tests = ["matplotlib (>=2.2.3)", "scikit-image (>=0.14.5)", "pandas (>=0.25.0)", "pytest (>=5.0.1)", "pytest-cov (>=2.9.0)", "flake8 (>=3.8.2)", "black (>=21.6b0)", "mypy (>=0.770)", "pyamg (>=4.0.0)"]
 
 [[package]]
 name = "scipy"
@@ -1756,11 +1762,11 @@ python-versions = ">= 3.7"
 
 [[package]]
 name = "tpcp"
-version = "0.3.1"
+version = "0.9.0"
 description = "Pipeline and Dataset helpers for complex algorithm evaluation."
 category = "main"
 optional = false
-python-versions = ">=3.7.1,<3.11"
+python-versions = ">=3.8,<3.11"
 
 [package.dependencies]
 joblib = ">=1.1.0,<2.0.0"
@@ -1768,6 +1774,11 @@ numpy = ">=1,<2"
 pandas = ">=1,<2"
 scikit-learn = ">=1,<2"
 tqdm = ">=4.62.3,<5.0.0"
+typing-extensions = ">=4.1.1"
+
+[package.extras]
+optuna = ["optuna (>=2.10.0,<3.0.0)"]
+torch = ["torch (>=1.6.0)"]
 
 [[package]]
 name = "tqdm"
@@ -1922,7 +1933,7 @@ docs = ["jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "jaraco.packaging (>=9)
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8,<3.10"
-content-hash = "8dfbb731a1886138e26cff5803eb940cff3b073d1b84a0cd64d999fb450813e4"
+content-hash = "6376cea37ffabe77162303522e766339adc817e6ff87e76e1e30eb38846f39ea"
 
 [metadata.files]
 aiohttp = [
@@ -2049,10 +2060,7 @@ beautifulsoup4 = [
     {file = "beautifulsoup4-4.11.1-py3-none-any.whl", hash = "sha256:58d5c3d29f5a36ffeb94f02f0d786cd53014cf9b3b3951d42e0080d8a9498d30"},
     {file = "beautifulsoup4-4.11.1.tar.gz", hash = "sha256:ad9aa55b65ef2808eb405f46cf74df7fcb7044d5cbc26487f96eb2ef2e436693"},
 ]
-biopsykit = [
-    {file = "biopsykit-0.5.1-py3-none-any.whl", hash = "sha256:26aa4a096c39dfb12551af3c053c19f5aabadfb82281025f954c1da2984a3530"},
-    {file = "biopsykit-0.5.1.tar.gz", hash = "sha256:f714a117ec5367a699bd022d821f31634b7b537476899b539b19701854a1bdce"},
-]
+biopsykit = []
 black = [
     {file = "black-22.6.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:f586c26118bc6e714ec58c09df0157fe2d9ee195c764f630eb0d8e7ccce72e69"},
     {file = "black-22.6.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:b270a168d69edb8b7ed32c193ef10fd27844e5c60852039599f9184460ce0807"},
@@ -2195,10 +2203,7 @@ et-xmlfile = [
     {file = "et_xmlfile-1.1.0.tar.gz", hash = "sha256:8eb9e2bc2f8c97e37a2dc85a09ecdcdec9d8a396530a6d5a33b30b9a92da0c5c"},
 ]
 fastjsonschema = []
-fau-colors = [
-    {file = "fau_colors-1.0.5-py3-none-any.whl", hash = "sha256:9cdf47d1ee7d6a074326b2673a67a06ab7dcadaf131984a3af9138ddc00ebeda"},
-    {file = "fau_colors-1.0.5.tar.gz", hash = "sha256:054db4d2413378ba9331ab1dbf1cfecaa866f9bf76cb1e294b747f936806aab8"},
-]
+fau-colors = []
 flake8 = [
     {file = "flake8-2.3.0-py2.py3-none-any.whl", hash = "sha256:c99cc9716d6655d9c8bcb1e77632b8615bf0abd282d7abd9f5c2148cad7fc669"},
     {file = "flake8-2.3.0.tar.gz", hash = "sha256:5ee1a43ccd0716d6061521eec6937c983efa027793013e572712c4da55c7c83e"},
@@ -2223,10 +2228,7 @@ iniconfig = [
     {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
 ]
 ipykernel = []
-ipympl = [
-    {file = "ipympl-0.8.8-py2.py3-none-any.whl", hash = "sha256:86468aeaae8c0a28007d0c7f6dbb85f2b6cb9805167e88d4daa7529562009159"},
-    {file = "ipympl-0.8.8.tar.gz", hash = "sha256:5bf5d780b07fafe7924922ac6b2f3abd22721f341e5e196b3b82737dfbd0e1c9"},
-]
+ipympl = []
 ipython = [
     {file = "ipython-7.34.0-py3-none-any.whl", hash = "sha256:c175d2440a1caff76116eb719d40538fbb316e214eda85c5515c303aacbfb23e"},
     {file = "ipython-7.34.0.tar.gz", hash = "sha256:af3bdb46aa292bce5615b1b2ebc76c2080c5f77f54bda2ec72461317273e7cd6"},
@@ -2235,10 +2237,7 @@ ipython-genutils = [
     {file = "ipython_genutils-0.2.0-py2.py3-none-any.whl", hash = "sha256:72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8"},
     {file = "ipython_genutils-0.2.0.tar.gz", hash = "sha256:eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8"},
 ]
-ipywidgets = [
-    {file = "ipywidgets-7.7.1-py2.py3-none-any.whl", hash = "sha256:aa1076ab7102b2486ae2607c43c243200a07c17d6093676c419d4b6762489a50"},
-    {file = "ipywidgets-7.7.1.tar.gz", hash = "sha256:5f2fa1b7afae1af32c88088c9828ad978de93ddda393d7ed414e553fee93dcab"},
-]
+ipywidgets = []
 isort = [
     {file = "isort-5.10.1-py3-none-any.whl", hash = "sha256:6f62d78e2f89b4500b080fe3a81690850cd254227f27f75c3a0c491a1f351ba7"},
     {file = "isort-5.10.1.tar.gz", hash = "sha256:e8443a5e7a020e9d7f97f1d7d9cd17c88bcb3bc7e218bf9cf5095fe550be2951"},
@@ -2360,10 +2359,7 @@ markupsafe = [
     {file = "MarkupSafe-2.1.1.tar.gz", hash = "sha256:7f91197cc9e48f989d12e4e6fbc46495c446636dfc81b9ccf50bb0ec74b91d4b"},
 ]
 matplotlib = []
-matplotlib-inline = [
-    {file = "matplotlib-inline-0.1.3.tar.gz", hash = "sha256:a04bfba22e0d1395479f866853ec1ee28eea1485c1d69a6faf00dc3e24ff34ee"},
-    {file = "matplotlib_inline-0.1.3-py3-none-any.whl", hash = "sha256:aed605ba3b72462d64d475a21a9296f400a19c4f74a31b59103d2a99ffd5aa5c"},
-]
+matplotlib-inline = []
 mccabe = [
     {file = "mccabe-0.6.1-py2.py3-none-any.whl", hash = "sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42"},
     {file = "mccabe-0.6.1.tar.gz", hash = "sha256:dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"},
@@ -2450,10 +2446,7 @@ nest-asyncio = [
     {file = "nest_asyncio-1.5.5-py3-none-any.whl", hash = "sha256:b98e3ec1b246135e4642eceffa5a6c23a3ab12c82ff816a92c612d68205813b2"},
     {file = "nest_asyncio-1.5.5.tar.gz", hash = "sha256:e442291cd942698be619823a17a86a5759eabe1f8613084790de189fe9e16d65"},
 ]
-neurokit2 = [
-    {file = "neurokit2-0.1.7-py2.py3-none-any.whl", hash = "sha256:000d908fa90441673fa7cdfb0bd4c5326c701daf260e2c612fb0900fd8421e75"},
-    {file = "neurokit2-0.1.7.tar.gz", hash = "sha256:03c2aa354ab8d8b9a559f4e5e465b67630465a230b919a3a412c9aad31c59395"},
-]
+neurokit2 = []
 nilspodlib = [
     {file = "nilspodlib-3.2.2-py3-none-any.whl", hash = "sha256:4aa615c856c28e210c2ccf6314b59d25b852aab15bc042567d2f0059d7df3791"},
     {file = "nilspodlib-3.2.2.tar.gz", hash = "sha256:e906a5b891dc0af742b19766ae3d41d40d4972d5edcd0d8eddc5ccad7899dc65"},
@@ -2599,7 +2592,7 @@ pillow = [
     {file = "Pillow-9.2.0.tar.gz", hash = "sha256:75e636fd3e0fb872693f23ccb8a5ff2cd578801251f3a4f6854c6a5d437d3c04"},
 ]
 pingouin = [
-    {file = "pingouin-0.5.1.tar.gz", hash = "sha256:c00d40d6b46d780513d5a63d806347eafe89f68da882b0e6313cd392a91bd24e"},
+    {file = "pingouin-0.5.2.tar.gz", hash = "sha256:00b8c8bc976b745bcc38a6c09dc5186e91da2b1b25006310641e8dd40a75369c"},
 ]
 pkgutil-resolve-name = []
 platformdirs = [
@@ -2681,10 +2674,7 @@ pydocstyle = [
     {file = "pydocstyle-6.1.1.tar.gz", hash = "sha256:1d41b7c459ba0ee6c345f2eb9ae827cab14a7533a88c5c6f7e94923f72df92dc"},
 ]
 pyflakes = []
-pygments = [
-    {file = "Pygments-2.12.0-py3-none-any.whl", hash = "sha256:dc9c10fb40944260f6ed4c688ece0cd2048414940f1cea51b8b226318411c519"},
-    {file = "Pygments-2.12.0.tar.gz", hash = "sha256:5eb116118f9612ff1ee89ac96437bb6b49e8f04d8a13b514ba26f620208e26eb"},
-]
+pygments = []
 pylint = []
 pylint-celery = [
     {file = "pylint-celery-0.3.tar.gz", hash = "sha256:41e32094e7408d15c044178ea828dd524beedbdbe6f83f712c5e35bde1de4beb"},
@@ -2800,7 +2790,40 @@ requests = [
 requirements-detector = [
     {file = "requirements-detector-0.7.tar.gz", hash = "sha256:0d1e13e61ed243f9c3c86e6cbb19980bcb3a0e0619cde2ec1f3af70fdbee6f7b"},
 ]
-scikit-learn = []
+scikit-learn = [
+    {file = "scikit-learn-1.0.2.tar.gz", hash = "sha256:b5870959a5484b614f26d31ca4c17524b1b0317522199dc985c3b4256e030767"},
+    {file = "scikit_learn-1.0.2-cp310-cp310-macosx_10_13_x86_64.whl", hash = "sha256:da3c84694ff693b5b3194d8752ccf935a665b8b5edc33a283122f4273ca3e687"},
+    {file = "scikit_learn-1.0.2-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:75307d9ea39236cad7eea87143155eea24d48f93f3a2f9389c817f7019f00705"},
+    {file = "scikit_learn-1.0.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f14517e174bd7332f1cca2c959e704696a5e0ba246eb8763e6c24876d8710049"},
+    {file = "scikit_learn-1.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d9aac97e57c196206179f674f09bc6bffcd0284e2ba95b7fe0b402ac3f986023"},
+    {file = "scikit_learn-1.0.2-cp310-cp310-win_amd64.whl", hash = "sha256:d93d4c28370aea8a7cbf6015e8a669cd5d69f856cc2aa44e7a590fb805bb5583"},
+    {file = "scikit_learn-1.0.2-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:85260fb430b795d806251dd3bb05e6f48cdc777ac31f2bcf2bc8bbed3270a8f5"},
+    {file = "scikit_learn-1.0.2-cp37-cp37m-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:a053a6a527c87c5c4fa7bf1ab2556fa16d8345cf99b6c5a19030a4a7cd8fd2c0"},
+    {file = "scikit_learn-1.0.2-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:245c9b5a67445f6f044411e16a93a554edc1efdcce94d3fc0bc6a4b9ac30b752"},
+    {file = "scikit_learn-1.0.2-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:158faf30684c92a78e12da19c73feff9641a928a8024b4fa5ec11d583f3d8a87"},
+    {file = "scikit_learn-1.0.2-cp37-cp37m-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:08ef968f6b72033c16c479c966bf37ccd49b06ea91b765e1cc27afefe723920b"},
+    {file = "scikit_learn-1.0.2-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:16455ace947d8d9e5391435c2977178d0ff03a261571e67f627c8fee0f9d431a"},
+    {file = "scikit_learn-1.0.2-cp37-cp37m-win32.whl", hash = "sha256:2f3b453e0b149898577e301d27e098dfe1a36943f7bb0ad704d1e548efc3b448"},
+    {file = "scikit_learn-1.0.2-cp37-cp37m-win_amd64.whl", hash = "sha256:46f431ec59dead665e1370314dbebc99ead05e1c0a9df42f22d6a0e00044820f"},
+    {file = "scikit_learn-1.0.2-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:ff3fa8ea0e09e38677762afc6e14cad77b5e125b0ea70c9bba1992f02c93b028"},
+    {file = "scikit_learn-1.0.2-cp38-cp38-macosx_12_0_arm64.whl", hash = "sha256:9369b030e155f8188743eb4893ac17a27f81d28a884af460870c7c072f114243"},
+    {file = "scikit_learn-1.0.2-cp38-cp38-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:7d6b2475f1c23a698b48515217eb26b45a6598c7b1840ba23b3c5acece658dbb"},
+    {file = "scikit_learn-1.0.2-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:285db0352e635b9e3392b0b426bc48c3b485512d3b4ac3c7a44ec2a2ba061e66"},
+    {file = "scikit_learn-1.0.2-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:5cb33fe1dc6f73dc19e67b264dbb5dde2a0539b986435fdd78ed978c14654830"},
+    {file = "scikit_learn-1.0.2-cp38-cp38-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:b1391d1a6e2268485a63c3073111fe3ba6ec5145fc957481cfd0652be571226d"},
+    {file = "scikit_learn-1.0.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bc3744dabc56b50bec73624aeca02e0def06b03cb287de26836e730659c5d29c"},
+    {file = "scikit_learn-1.0.2-cp38-cp38-win32.whl", hash = "sha256:a999c9f02ff9570c783069f1074f06fe7386ec65b84c983db5aeb8144356a355"},
+    {file = "scikit_learn-1.0.2-cp38-cp38-win_amd64.whl", hash = "sha256:7626a34eabbf370a638f32d1a3ad50526844ba58d63e3ab81ba91e2a7c6d037e"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-macosx_10_13_x86_64.whl", hash = "sha256:a90b60048f9ffdd962d2ad2fb16367a87ac34d76e02550968719eb7b5716fd10"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-macosx_12_0_arm64.whl", hash = "sha256:7a93c1292799620df90348800d5ac06f3794c1316ca247525fa31169f6d25855"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:eabceab574f471de0b0eb3f2ecf2eee9f10b3106570481d007ed1c84ebf6d6a1"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:55f2f3a8414e14fbee03782f9fe16cca0f141d639d2b1c1a36779fa069e1db57"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:80095a1e4b93bd33261ef03b9bc86d6db649f988ea4dbcf7110d0cded8d7213d"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:fa38a1b9b38ae1fad2863eff5e0d69608567453fdfc850c992e6e47eb764e846"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ff746a69ff2ef25f62b36338c615dd15954ddc3ab8e73530237dd73235e76d62"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-win32.whl", hash = "sha256:e174242caecb11e4abf169342641778f68e1bfaba80cd18acd6bc84286b9a534"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-win_amd64.whl", hash = "sha256:b54a62c6e318ddbfa7d22c383466d38d2ee770ebdb5ddb668d56a099f6eaf75f"},
+]
 scipy = []
 seaborn = [
     {file = "seaborn-0.11.2-py3-none-any.whl", hash = "sha256:85a6baa9b55f81a0623abddc4a26b334653ff4c6b18c418361de19dbba0ef283"},
@@ -2902,10 +2925,7 @@ tornado = [
     {file = "tornado-6.2-cp37-abi3-win_amd64.whl", hash = "sha256:e5f923aa6a47e133d1cf87d60700889d7eae68988704e20c75fb2d65677a8e4b"},
     {file = "tornado-6.2.tar.gz", hash = "sha256:9b630419bde84ec666bfd7ea0a4cb2a8a651c2d5cccdbdd1972a0c859dfc3c13"},
 ]
-tpcp = [
-    {file = "tpcp-0.3.1-py3-none-any.whl", hash = "sha256:d6e3f011e050527b28ab9d255b4e5182576c69b8c35e49314ea438a4ad6440b1"},
-    {file = "tpcp-0.3.1.tar.gz", hash = "sha256:5132a9def3a05b3917bb96cc6703c20e5cb2f046501a0ce29953dcdf5a2521e0"},
-]
+tpcp = []
 tqdm = [
     {file = "tqdm-4.64.0-py2.py3-none-any.whl", hash = "sha256:74a2cdefe14d11442cedf3ba4e21a3b84ff9a2dbdc6cfae2c34addb2a14a5ea6"},
     {file = "tqdm-4.64.0.tar.gz", hash = "sha256:40be55d30e200777a307a7585aee69e4eabb46b4ec6a4b4a5f2d9f11e7d5408d"},

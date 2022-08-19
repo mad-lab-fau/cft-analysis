@@ -14,8 +14,8 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.10"
-biopsykit = {version="^0.5.0", extras=["jupyter"]}
-tpcp = "^0.3.1"
+biopsykit = {version="^0.6", extras=["jupyter"]}
+tpcp = "^0.9.0"
 
 [tool.poetry.dev-dependencies]
 poethepoet = "^0.11.0"

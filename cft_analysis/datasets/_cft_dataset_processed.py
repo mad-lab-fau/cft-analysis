@@ -41,11 +41,11 @@ class CftDatasetProcessed(Dataset):
         subset_index: Optional[Sequence[str]] = None,
         exclude_subjects: Optional[bool] = True,
     ):
-        super().__init__(groupby_cols=groupby_cols, subset_index=subset_index)
         # ensure pathlib
         self.base_path = base_path
         self.exclude_subjects = exclude_subjects
         self._exclude_subjects()
+        super().__init__(groupby_cols=groupby_cols, subset_index=subset_index)
 
     def _exclude_subjects(self):
         if self.exclude_subjects:
