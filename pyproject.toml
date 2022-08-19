@@ -22,7 +22,7 @@ poethepoet = "^0.11.0"
 pytest = "^6.2.5"
 pytest-cov = "^3.0.0"
 coverage = "^6.2"
-black = {version = "^21.9b0", extras = ["d", "jupyter"]}
+black = {version = "^22", extras = ["d", "jupyter"]}
 isort = "^5.10.1"
 prospector = "^1.2.0"
 
