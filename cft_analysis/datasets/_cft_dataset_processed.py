@@ -65,6 +65,20 @@ class CftDatasetProcessed(Dataset):
         return index
 
     @property
+    def condition_list(self) -> pd.DataFrame:
+        """Return condition list.
+
+        Returns
+        -------
+        dataframe
+            dataframe with mapping of subject ID and condition
+
+        """
+        condition_list = self.index[["subject", "condition"]]
+        condition_list = condition_list.drop_duplicates().set_index("subject").sort_index()
+        return condition_list
+
+    @property
     def heart_rate(self) -> pd.DataFrame:
         """Load and return heart rate data.
 
