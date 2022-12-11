@@ -57,7 +57,7 @@ Finally, go to the `experiments` folder and run the Jupyter Notebooks.
 Currently, this repository contains the following experiments:
 
 ### 2022 – Scientific Reports
-Analysis of the [CFT Dataset](https://osf.io/8fb6n/) for the paper "Vagus Activation by Cold Face Test Reduces Acute Psychosocial Stress Responses", submitted to *Scientific Reports* [TODO: update when published].
+Analysis of the [CFT Dataset](https://osf.io/8fb6n/) for the paper [Vagus Activation by Cold Face Test Reduces Acute Psychosocial Stress Responses](https://www.nature.com/articles/s41598-022-23222-9), published in *Scientific Reports*.
 
 #### Usage
 In order to run the code, first download the CFT Dataset, e.g. from [OSF](https://osf.io/8fb6n/). Then, create a file named `config.json` in the folder `/experiments/2022_scientific_reports` with the following content:
