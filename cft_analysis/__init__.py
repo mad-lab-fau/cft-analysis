@@ -1,6 +1,6 @@
 """A package to work with data from the CFT Study."""
 
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 from cft_analysis import datasets, feature_extraction, utils
 
