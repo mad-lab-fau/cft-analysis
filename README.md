@@ -16,7 +16,8 @@ This package contains various helper functions to work with the dataset (includi
 The repository is structured as follows:
 
 ```bash
-├── cft_analysis/                                   # cft-analysis Python package
+├── src/
+│   └── cft_analysis/                               # cft-analysis Python package
 └── experiments/                                    # Folder with conducted analysis experiments; each experiment has its own subfolder
     └── 2022_scientific_reports/                    # Analysis for the 2022 Scientific Reports Paper (see below)
         ├── data/                                   # Processed data and extracted parameters
@@ -39,16 +40,17 @@ The repository is structured as follows:
 
 ## Installation
 If you want to use this package to reproduce the analysis results then clone the repository and install the 
-package via [poetry](https://python-poetry.org):
+package via [uv](https://docs.astral.sh/uv/getting-started/installation/):
 ```bash
 git clone git@github.com:mad-lab-fau/cft-analysis.git
 cd cft-analysis
-poetry install # alternative: pip install .
+uv sync
 ```
+
 This creates a new python venv in the `cft-analysis/.venv` folder. Next, register a new IPython kernel for the venv:
 ```bash
 cd cft-analysis
-poetry run poe register_ipykernel
+poe register_ipykernel
 ```
 
 Finally, go to the `experiments` folder and run the Jupyter Notebooks. 
