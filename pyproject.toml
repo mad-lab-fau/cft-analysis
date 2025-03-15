@@ -1,34 +1,41 @@
-[tool.poetry]
+[project]
 name = "cft-analysis"
 version = "1.2.1"
 description = "Package for the analysis of Cold Face Test Data."
 authors = [
-    "Robert Richer <robert.richer@fau.de>",
-    "Janis Zenkner <janis.zenkner@fau.de>",
-    "Arne Kuederle <arne.kuederle@fau.de>"
+    { name = "Robert Richer", email = "robert.richer@fau.de" },
+    { name = "Janis Zenkner", email = "janis.zenkner@fau.de" },
+    { name = "Arne Kuederle", email = "arne.kuederle@fau.de" },
 ]
+requires-python = ">=3.8,<3.11"
 readme = "README.md"
-homepage = "https://github.com/mad-lab-fau/cft-analysis"
-repository = "https://github.com/mad-lab-fau/cft-analysis"
 license = "MIT"
+dependencies = [
+    "biopsykit[jupyter]>=0.6,<0.7",
+    "tpcp>=0.9.0,<0.10",
+    "fau-colors>=1.7.0,<2",
+    "seaborn>=0.11.2,<0.12",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.8,<3.11"
-biopsykit = {version="^0.6", extras=["jupyter"]}
-tpcp = "^0.9.0"
+[project.urls]
+Homepage = "https://github.com/mad-lab-fau/cft-analysis"
+Repository = "https://github.com/mad-lab-fau/cft-analysis"
 
-[tool.poetry.dev-dependencies]
-poethepoet = "^0.11.0"
-pytest = "^6.2.5"
-pytest-cov = "^3.0.0"
-coverage = "^6.2"
-black = {version = "^22", extras = ["d", "jupyter"]}
-isort = "^5.10.1"
-prospector = "^1.2.0"
+[dependency-groups]
+dev = [
+    "poethepoet>=0.11.0,<0.12",
+    "pytest>=6.2.5,<7",
+    "pytest-cov>=3.0.0,<4",
+    "coverage~=6.2",
+    "black[d, jupyter]>=22,<23",
+    "isort>=5.10.1,<6",
+    "prospector>=1.2.0,<2",
+    "ipykernel>=6.4.1,<7",
+]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.black]
 line-length = 120
@@ -56,7 +63,6 @@ profile = "black"
 multi_line_output = 3
 line_length = 120
 skip_gitignore = true
-
 
 [tool.poe.tasks]
 _black = "black ."
