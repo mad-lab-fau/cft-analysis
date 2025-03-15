@@ -7,7 +7,7 @@ authors = [
     { name = "Janis Zenkner", email = "janis.zenkner@fau.de" },
     { name = "Arne Kuederle", email = "arne.kuederle@fau.de" },
 ]
-requires-python = ">=3.8,<3.11"
+requires-python = ">=3.8,<=3.11"
 readme = "README.md"
 license = "MIT"
 dependencies = [
